@@ -1,0 +1,42 @@
+﻿@page "/EventHandling/Introduction"
+
+<h3>@Heading</h3>
+
+<button @onclick="UpdateHeading">Update Heading</button>
+<button @onclick="UpdateHeadingAsync">Update Heading Async</button>
+
+<hr />
+
+<label>
+    <input type="checkbox" class="form-check-input" @onchange="CheckChanged" />
+    CheckChanged
+</label>
+<label>
+    <input type="checkbox" class="form-check-input" @onchange="CheckChangedAsync" />
+    CheckChangedAsync
+</label>
+
+@code {
+    private string Heading { get; set; } = "Introduction";
+
+    private void UpdateHeading(MouseEventArgs e)
+    {
+        Heading = Heading + " (Updated)";
+    }
+
+    private async Task UpdateHeadingAsync(MouseEventArgs e)
+    {
+        await Task.FromResult(Heading = Heading + " (Updated Async)");
+    }
+
+    private void CheckChanged()
+    {
+        Console.WriteLine("CheckChanged");
+    }
+
+    private async Task CheckChangedAsync()
+    {
+        Console.WriteLine("CheckChangedAsync");
+        await Task.FromResult(0);
+    }
+}

@@ -1,0 +1,15 @@
+﻿<h3>ChildComponent</h3>
+
+<h4>Parent's extra is processed</h4>
+<input @attributes="AdditionalAttributes" />
+
+<h4>Child's extra is last, so is processed</h4>
+<input @attributes="AdditionalAttributes" extra="Child" />
+
+<h4>Parent's extra is last (in AdditionalAttributes) so is processed</h4>
+<input extra="Child" @attributes="AdditionalAttributes" />
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; }
+}

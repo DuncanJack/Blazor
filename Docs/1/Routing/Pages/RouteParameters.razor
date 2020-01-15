@@ -1,0 +1,21 @@
+﻿@page "/RouteParameters"
+@page "/RouteParameters/{text}"
+
+<h3>RouteParameters</h3>
+
+@if (Text == string.Empty)
+{
+    <p>No text</p>
+}
+else
+{
+    <p>@Text</p>
+}
+
+<NavLink href="/RouteParameters">RouteParameters</NavLink>
+<NavLink href="/RouteConstraints">RouteConstraints</NavLink>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+}

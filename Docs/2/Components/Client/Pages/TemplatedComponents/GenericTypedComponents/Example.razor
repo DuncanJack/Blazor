@@ -1,0 +1,25 @@
+﻿@page "/TemplatedComponents/GenericTypedComponents"
+
+<h3>Generic-Typed Components</h3>
+
+<ListViewTemplate Items="Items">
+    <ItemTemplate>
+        <li>@context.Name</li>
+    </ItemTemplate>
+</ListViewTemplate>
+
+<ListViewTemplate Items="Items">
+    <ItemTemplate Context="person">
+        <li style="color:red;">@person.Name</li>
+    </ItemTemplate>
+</ListViewTemplate>
+
+<ListViewTemplate Items="Items" Context="person">
+    <ItemTemplate>
+        <li style="color:red;text-decoration:underline">@person.Name</li>
+    </ItemTemplate>
+</ListViewTemplate>
+
+@code {
+    public List<Person> Items = new Person().All;
+}

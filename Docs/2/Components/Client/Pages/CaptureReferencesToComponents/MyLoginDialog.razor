@@ -1,0 +1,14 @@
+﻿<h3>MyLoginDialog: (@_note)</h3>
+
+@code {
+    private string _note;
+
+    public void MyMethod(string note)
+    {
+        _note = note;
+
+        Console.WriteLine(note);
+
+        StateHasChanged();
+    }
+}

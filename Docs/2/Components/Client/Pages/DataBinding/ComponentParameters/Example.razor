@@ -1,0 +1,25 @@
+﻿@page "/DataBinding/ComponentParameters"
+
+<h3>Component Parameters</h3>
+
+<p>Parent Year: @ParentYear</p>
+
+<ChildComponent @bind-Year="ParentYear"></ChildComponent>
+
+<hr />
+
+<ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged"></ChildComponent>
+
+<button class="btn btn-primary" @onclick="ChangeTheYear">
+    Change ParentYear to 1986
+</button>
+
+@code {
+    [Parameter]
+    public int ParentYear { get; set; } = 1978;
+
+    private void ChangeTheYear()
+    {
+        ParentYear = 1986;
+    }
+}

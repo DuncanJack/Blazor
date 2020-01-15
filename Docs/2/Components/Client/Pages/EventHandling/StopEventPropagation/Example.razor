@@ -1,0 +1,29 @@
+﻿@page "/EventHandling/StopEventPropagation"
+
+<h3>Stop Event Propagation</h3>
+
+<label>
+    <input @bind="_stopPropagation" type="checkbox" />
+    Stop Propagation
+</label>
+
+<div @onclick="OnSelectParentDiv">
+    <h3>Parent div</h3>
+
+    <div @onclick="OnSelectChildDiv">
+        Child div that doesn't stop propagation when selected.
+    </div>
+
+    <div @onclick="OnSelectChildDiv" @onclick:stopPropagation="@_stopPropagation">
+        Child div that stops propagation when selected.
+    </div>
+</div>
+
+@code {
+    private bool _stopPropagation = false;
+
+    private void OnSelectParentDiv() => Console.WriteLine($"The parent div was selected. {DateTime.Now}");
+
+    private void OnSelectChildDiv() => Console.WriteLine($"A child div was selected. {DateTime.Now}");
+
+}

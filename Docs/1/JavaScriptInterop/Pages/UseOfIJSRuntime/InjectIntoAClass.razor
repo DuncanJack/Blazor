@@ -1,0 +1,12 @@
+﻿@page "/UseOfIJSRuntime/InjectIntoAClass"
+
+@inject MyClass  MyClass
+
+<h3>InjectIntoAClass</h3>
+
+@code {
+    protected override void OnInitialized()
+    {
+        MyClass.Log("/UseOfIJSRuntime/InjectIntoAClass");
+    }
+}

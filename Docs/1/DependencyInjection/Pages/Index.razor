@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@using DependencyInjection.Components
+@using DependencyInjection.Services
+
+@*Let's inject a service in the traditional manner*@
+@inject ICounter Counter
+
+<button class="btn btn-primary" @onclick="Counter.Count">Count</button>
+
+
+<MyCounter></MyCounter>
+<MyCounter></MyCounter>
+<MyCounter></MyCounter>
+
+@code{
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Index.OnInitialized");
+        
+        Counter.Count();
+    }
+
+}

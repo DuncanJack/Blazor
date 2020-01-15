@@ -1,0 +1,66 @@
+﻿@page "/NavigationManager"
+@implements IDisposable;
+@inject NavigationManager NavigationManager
+
+<h3>Example</h3>
+
+<p>BaseUri: @NavigationManager.BaseUri</p>
+<p>NavigationManager.Uri: @NavigationManager.Uri</p>
+<p>Query: @Query</p>
+
+<p>
+    Location: @Location<br />
+    IsIntercepted: @IsIntercepted<br />
+    Initiated by NavigationManager.NavigateTo: @(!IsIntercepted)
+</p>
+
+<button class="btn btn-primary" @onclick="@(() => NavigationManager.NavigateTo("/NavigationManager"))">/NavigationManager</button>
+<a href="/NavigationManager">/NavigationManager</a>
+
+<NavLink href="/NavigationManager?name=a">/NavigationManager?name=a</NavLink> |
+<NavLink href="/NavigationManager?name=b">/NavigationManager?name=b</NavLink> |
+<NavLink href="/NavigationManager?name=c">/NavigationManager?name=c</NavLink>
+
+@code {
+
+    public string BaseUri { get; set; } = string.Empty;
+    public string Uri { get; set; } = string.Empty;
+    public string Query { get; set; } = string.Empty;
+    public string Location { get; set; } = string.Empty;
+    public bool IsIntercepted { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        NavigationManager.LocationChanged += LocationChanged;
+    }
+
+    private void LocationChanged(object sender, LocationChangedEventArgs args)
+    {
+        BaseUri = NavigationManager.BaseUri;
+        Uri = NavigationManager.Uri;
+        Location = args.Location;
+        IsIntercepted = args.IsNavigationIntercepted;
+
+        var uri = new Uri(Uri);
+
+        Query = uri.Query;
+
+        var parsed = System.Web.HttpUtility.ParseQueryString(Query);
+
+        // Server app remember ;)
+        Console.WriteLine(parsed.Get("name"));
+
+        Console.WriteLine("NavigationManager: LocationChanged()");
+
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        NavigationManager.LocationChanged -= LocationChanged;
+        Console.WriteLine("NavigationManager: Dispose()");
+    }
+
+}

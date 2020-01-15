@@ -1,0 +1,13 @@
+@page "/RouteParameters"
+@page "/RouteParameters/{text}"
+
+<h3>Example</h3>
+
+<p>
+    You say: @Text
+</p>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = "Fantastic";
+}

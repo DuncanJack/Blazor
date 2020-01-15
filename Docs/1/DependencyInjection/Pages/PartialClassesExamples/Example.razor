@@ -1,0 +1,14 @@
+﻿@page "/PartialClassesExample"
+
+<h3>Example</h3>
+
+<button class="btn btn-primary" @onclick="Counter.Count">Count</button>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        Counter.Count();
+    }
+
+}

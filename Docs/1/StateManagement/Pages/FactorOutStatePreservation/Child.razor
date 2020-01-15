@@ -1,0 +1,17 @@
+﻿<h3>Child</h3>
+
+<p>CurrentCount: @CounterStateProvider.CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">IncrementCount</button>
+
+@code {
+
+    [CascadingParameter]
+    private CounterStateProvider CounterStateProvider { get; set; }
+
+    private async Task IncrementCount()
+    {
+        CounterStateProvider.CurrentCount++;
+        await CounterStateProvider.SaveChangesAsync();
+    }
+}

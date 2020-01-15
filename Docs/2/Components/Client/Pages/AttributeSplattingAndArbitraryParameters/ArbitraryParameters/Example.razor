@@ -1,0 +1,13 @@
+﻿@page "/AttributeSplattingAndArbitraryParameters/ArbitraryParameters"
+
+<h3>Arbitrary Parameters</h3>
+
+<ChildComponent extra="Parent" @attributes="SplatThese"></ChildComponent>
+
+@code {
+    public Dictionary<string, object> SplatThese =
+        new Dictionary<string, object>
+        {
+            { "placeholder", "My placeholder"}
+        };
+}

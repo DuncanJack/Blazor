@@ -1,0 +1,198 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Components</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        @*<li class="nav-item px-3">
+            <NavLink class="nav-link" href="ComponentClasses">
+                <span class="oi oi-plus" aria-hidden="true"></span> Component Classes
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="UseComponents">
+                <span class="oi oi-plus" aria-hidden="true"></span> Use Components
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ComponentParameters">
+                <span class="oi oi-plus" aria-hidden="true"></span> Component Parameters
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/AttributeSplattingAndArbitraryParameters/AttributeSplatting">
+                <span class="oi oi-plus" aria-hidden="true"></span> Attribute Splatting
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/AttributeSplattingAndArbitraryParameters/ArbitraryParameters">
+                <span class="oi oi-plus" aria-hidden="true"></span> Arbitrary Parameters
+            </NavLink>
+        </li>
+
+        <li style="color:white">Data Binding</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/DataBinding/Introduction">
+                <span class="oi oi-plus" aria-hidden="true"></span> Introduction
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/DataBinding/UnparsableValues">
+                <span class="oi oi-plus" aria-hidden="true"></span> Unparsable Values
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/DataBinding/Globalization">
+                <span class="oi oi-plus" aria-hidden="true"></span> Globalization
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/DataBinding/FormatStrings">
+                <span class="oi oi-plus" aria-hidden="true"></span> Format Strings
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/DataBinding/ComponentParameters">
+                <span class="oi oi-plus" aria-hidden="true"></span> Component Parameters
+            </NavLink>
+        </li>
+
+        <li style="color:white">Event Handling</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/EventHandling/Introduction">
+                <span class="oi oi-plus" aria-hidden="true"></span> Introduction
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/EventHandling/LambdaExpressions">
+                <span class="oi oi-plus" aria-hidden="true"></span> Lambda Expressions
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/EventHandling/EventCallback">
+                <span class="oi oi-plus" aria-hidden="true"></span> Event Callback
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/EventHandling/PreventDefaultActions">
+                <span class="oi oi-plus" aria-hidden="true"></span> Prevent Default Actions
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/EventHandling/StopEventPropagation">
+                <span class="oi oi-plus" aria-hidden="true"></span> Stop Event Propagation
+            </NavLink>
+        </li>
+
+        <li style="color:white">Chained Bind</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/ChainedBind/Example1">
+                <span class="oi oi-plus" aria-hidden="true"></span> Example 1
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/ChainedBind/Example2">
+                <span class="oi oi-plus" aria-hidden="true"></span> Example 2
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/CaptureReferencesToComponents">
+                <span class="oi oi-plus" aria-hidden="true"></span> Component References
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/InvokeComponentMethods">
+                <span class="oi oi-plus" aria-hidden="true"></span> Invoke Component Methods
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/UseKey">
+                <span class="oi oi-plus" aria-hidden="true"></span> Use Key
+            </NavLink>
+        </li>
+
+        <li style="color:white">Routing</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/Routing/Route1">
+                <span class="oi oi-plus" aria-hidden="true"></span> Route 1
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/Routing/Route2">
+                <span class="oi oi-plus" aria-hidden="true"></span> Route 2
+            </NavLink>
+        </li>
+
+        <li style="color:silver">Route Parameters</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/RouteParameters">
+                <span class="oi oi-plus" aria-hidden="true"></span> Route Parameters
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/RouteParameters/duncan">
+                <span class="oi oi-plus" aria-hidden="true"></span> Route Parameters duncan
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/PartialClassSupport">
+                <span class="oi oi-plus" aria-hidden="true"></span> Partial Class Support
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/ImportComponents">
+                <span class="oi oi-plus" aria-hidden="true"></span> Import Components
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/ConditionalHtmlAttributes">
+                <span class="oi oi-plus" aria-hidden="true"></span> Conditional HTML Attributes
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/RawHtml">
+                <span class="oi oi-plus" aria-hidden="true"></span> Raw HTML
+            </NavLink>
+        </li>*@
+
+        <li style="color:silver">Templated Components</li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/TemplatedComponents/TemplateParameters">
+                <span class="oi oi-plus" aria-hidden="true"></span>Template Parameters
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/TemplatedComponents/GenericTypedComponents">
+                <span class="oi oi-plus" aria-hidden="true"></span>Genric-typed Components
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

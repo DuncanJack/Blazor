@@ -1,0 +1,24 @@
+﻿@page "/InvokeJavaScript"
+
+@inject IJSRuntime JSRuntime
+
+<h3>JsInterop</h3>
+
+<button class="btn btn-primary" @onclick="TriggerJsPrompt">
+    Trigger JavaScript Prompt
+</button>
+
+<h4 id="welcome" style="color:green;font-style:italic"></h4>
+
+@code {
+    public async Task TriggerJsPrompt()
+    {
+        var name = await JSRuntime.InvokeAsync<string>(
+            "invokeJavaScript.showPrompt",
+            "What's your name?");
+
+        await JSRuntime.InvokeVoidAsync(
+            "invokeJavaScript.displayWelcome", 
+            $"Hello {name}! Welcome to Blazor!");
+    }
+}

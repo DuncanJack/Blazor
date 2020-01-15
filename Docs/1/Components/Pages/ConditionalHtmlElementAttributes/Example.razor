@@ -1,0 +1,14 @@
+@page "/ConditionalHtmlElementAttributes"
+
+<input type="checkbox" checked="@IsCompleted" />
+
+<button class="btn btn-primary" @onclick="OnClick">Toggle</button>
+
+@code {
+    public bool IsCompleted { get; set; }
+
+    public void OnClick()
+    {
+        IsCompleted = !IsCompleted;
+    }
+}

@@ -1,0 +1,26 @@
+﻿@page "/CaptureReferencesToElements"
+
+@inject IJSRuntime JSRuntime;
+
+<h3>This example calls JSRuntime</h3>
+<input @ref="input1" placeholder="input1 ..." />
+<button @onclick="SetFocusOnInput1">Set focus on input1</button>
+
+<h3>This calls an extension method</h3>
+<input @ref="input2" placeholder="input2 ..."/>
+<button @onclick="SetFocusOnInput2">Set focus on input2</button>
+
+@code {
+    ElementReference input1;
+    ElementReference input2;
+
+    public async Task SetFocusOnInput1()
+    {
+        await JSRuntime.InvokeVoidAsync("captureReferencesToElements.focusElement", input1);
+    }
+
+    public async Task SetFocusOnInput2()
+    {
+        await input2.Focus(JSRuntime);
+    }
+}

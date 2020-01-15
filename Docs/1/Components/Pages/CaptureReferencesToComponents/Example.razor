@@ -1,0 +1,50 @@
+@page "/CaptureReferencesToComponents"
+
+@using Components.Models;
+
+<h3>Example</h3>
+
+<MyLoginDialog @ref="loginDialog" ParentMethod="MyParentMethod" Person="person" Name="@Name"></MyLoginDialog>
+
+<button @onclick="@OnClick">Click Me</button>
+
+<button @onclick="@(e => loginDialog.Test())">Click Me</button>
+
+<p>Example.Person.Name: @person.Name</p>
+
+<button @onclick="@PersonTest">PersonTest</button>
+
+<button @onclick="@(e => Console.WriteLine("Do Nothing"))">Do Nothing</button>
+
+<button class="btn btn-primary" @onclick="@ChangeName">Change name</button>
+
+<h3>Name: @Name</h3>
+
+@code {
+private MyLoginDialog loginDialog;
+
+Person person = new Person { Name = "Duncan" };
+
+private string Name = "Sarah";
+
+private void OnClick()
+{
+    loginDialog.Test();
+}
+
+private void PersonTest()
+{
+    person.Test();
+    person.Name = "Duncan";
+}
+
+private void MyParentMethod()
+{
+    Console.WriteLine("Example.ParentMethod");
+}
+
+private void ChangeName()
+{
+    Name = "Name1";
+}
+}

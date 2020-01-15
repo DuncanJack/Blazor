@@ -1,0 +1,18 @@
+﻿@using DependencyInjection.Services
+
+@inject ICounter Counter
+
+<h3>MyCounter</h3>
+
+<button class="btn btn-primary" @onclick="Counter.Count">Count</button>
+
+@code { 
+    
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Console.WriteLine("MyCounter.OnInitialized");
+    }
+
+}

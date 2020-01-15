@@ -1,0 +1,56 @@
+﻿@page "/FormsAndValidation/Example2"
+
+@using FormsAndValidation.Shared
+
+    <EditForm Model="model" OnValidSubmit="OnValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <p>
+            <label for="identifier">Identifier: </label>
+            <InputText id="identifier" @bind-Value="model.Identifier" />
+        </p>
+
+        <p>
+            <label for="description">Description (optional): </label>
+            <InputText id="description" @bind-Value="model.Description" />
+        </p>
+
+        <p>
+            <label for="classification">Classification: </label>
+            <InputSelect id="classification" @bind-Value="model.Classification">
+                <option value="">Select classification ...</option>
+                <option value="Exploration">Exploration</option>
+                <option value="Diplomacy">Diplomacy</option>
+                <option value="Defense">Defense</option>
+            </InputSelect>
+        </p>
+
+        <p>
+            <label for="accommodation">Maximum Accommodation: </label>
+            <InputNumber id="accommodation" @bind-Value="model.MaximumAccomodation" />
+        </p>
+
+        <p>
+            <label for="valid">Engineering Approval: </label>
+            <InputCheckbox id="valid" @bind-Value="model.IsValidatedDesign" />
+        </p>
+
+        <p>
+            <label for="productionDate">Production Date: </label>
+            <InputDate id="productionDate" @bind-Value="model.ProductionDate" />
+        </p>
+
+        <button type="submit">Submit</button>
+
+    </EditForm>
+
+@code {
+    private StarshipModel model { get; set; } = new StarshipModel();
+
+    private void OnValidSubmit()
+    {
+        Console.WriteLine("OnValidSubmit");
+    }
+}

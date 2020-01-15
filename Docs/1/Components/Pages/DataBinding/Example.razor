@@ -1,0 +1,17 @@
+@page "/DataBinding"
+
+<h3>Example</h3>
+
+<input type="checkbox" class="form-check-input" id="italicsCheck" @bind="@ItalicsCheck" />
+
+<h3>italicsCheck: @ItalicsCheck</h3>
+
+<input @bind="@CurrentValue" />
+<h3>@CurrentValue</h3>
+@*<input value="@((UIEventArgs __e) => CurrentValue = __e.Value)" />*@
+
+
+@code {
+public bool ItalicsCheck { get; set; }
+public string CurrentValue { get; set; } = "Initial Value";
+}

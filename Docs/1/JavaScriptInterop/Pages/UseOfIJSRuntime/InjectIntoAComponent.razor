@@ -1,0 +1,12 @@
+﻿@page "/UseOfIJSRuntime/InjectIntoAComponent"
+
+@inject IJSRuntime  JSRuntime
+
+<h3>InjectIntoAComponent</h3>
+
+@code {
+    protected override void OnInitialized()
+    {
+        JSRuntime.InvokeVoidAsync("console.log", "/UseOfIJSRuntime/InjectIntoAComponent");
+    }
+}

@@ -1,0 +1,15 @@
+﻿@page "/DataBinding/Globalization"
+
+@using System.Globalization
+
+<h3>Globalization</h3>
+
+<p>@CultureInfo.CurrentCulture.DisplayName</p>
+
+<p>@CultureInfo.CurrentCulture.EnglishName</p>
+
+@code {        
+    protected override void OnInitialized()
+    {
+    }
+}

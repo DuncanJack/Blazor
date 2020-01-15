@@ -1,0 +1,13 @@
+﻿@page "/InputTextBasedOnTheInputEvent"
+
+@using FormsAndValidation.Client.Pages.InputTextBasedOnTheInputEvent
+
+<h3>Example</h3>
+
+<MyInputText @bind-Value="Name" ></MyInputText>
+
+@Name
+
+@code {
+    private string Name { get; set; }
+}

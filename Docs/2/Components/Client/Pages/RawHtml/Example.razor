@@ -1,0 +1,11 @@
+﻿@page "/RawHtml"
+
+<h3>Raw HTML</h3>
+
+@myHtml
+
+@((MarkupString)myHtml)
+
+@code {
+    private string myHtml = "<button class='btn btn-primary'>My Button</button>";
+}

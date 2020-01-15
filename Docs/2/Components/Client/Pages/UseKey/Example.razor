@@ -1,0 +1,36 @@
+﻿@page "/UseKey"
+
+<h3>Use Key</h3>
+
+@foreach (var person in People)
+{
+    <DetailsEditor @key="person" Details="person.Details" />
+}
+
+@if(_currentPerson != null)
+{
+    // Notice we can't use person as a key again, because it has already been used in the code block above.
+    // We could use e.g. a GUID, but there we use a Details object.
+    <div @key="_currentPerson.Details">
+        Current person name: @_currentPerson.Details.Name
+    </div>
+}
+
+<button class="btn btn-info" @onclick="@(() => _currentPerson = People.Single(p => p.Details.Name == "A"))">Make Current Person A</button>
+<button class="btn btn-info" @onclick="@(() => _currentPerson = People.Single(p => p.Details.Name == "B"))">Make Current Person B</button>
+
+@code {
+
+    private Person _currentPerson;
+
+    public IEnumerable<Person> People { get; set; }
+
+    protected override void OnInitialized()
+    {
+        People = new List<Person>
+        {
+            new Person{ Details = new Details{ Name = "A", Code = 1} },
+            new Person{ Details = new Details{ Name = "B", Code = 2} }
+        };
+    }
+}

@@ -1,0 +1,10 @@
+@page "/FormatStrings"
+
+<h3>Format Strings</h3>
+
+<input @bind="@StartDate" @bind:format="yyyy-MM-dd" />
+<h3>@StartDate</h3>
+
+@code {
+private DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+}

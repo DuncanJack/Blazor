@@ -1,0 +1,16 @@
+﻿@page "/DataBinding/UnparsableValues"
+
+<h3>Unparsable Values</h3>
+
+<h3>Age1: @Age1 (reverts on lose focus)</h3>
+<input @bind="@Age1" />
+
+<hr />
+
+<h3>Age2: @Age2 (reverts on key up)</h3>
+<input @bind-value="@Age2" @bind-value:event="oninput" />
+
+@code {
+    private int Age1 { get; set; } = 1;
+    private int Age2 { get; set; } = 2;
+}

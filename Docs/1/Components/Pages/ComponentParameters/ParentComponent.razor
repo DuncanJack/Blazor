@@ -1,0 +1,22 @@
+@page "/ComponentParameters/ParentComponent"
+
+<h1>Parent-child example</h1>
+
+<ChildComponent Title="Panel Title from Parent" @onclick="@ShowMessage">
+    Content of the child component is supplied by the parent component
+</ChildComponent>
+
+<p>
+    <b>
+        @_messageText
+    </b>
+</p>
+
+@code {
+private string _messageText;
+
+private void ShowMessage(EventArgs e)
+{
+    _messageText = "Blaze a new trail with Blazor!";
+}
+}

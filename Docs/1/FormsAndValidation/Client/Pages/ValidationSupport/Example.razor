@@ -1,0 +1,61 @@
+﻿@page "/ValidationSupport/Example"
+@using FormsAndValidation.Shared.ValidationSupport
+@inject NavigationManager NavigationManager
+
+<h3>Validation Support</h3>
+
+<EditForm Model="model" OnInvalidSubmit="OnInvalidSubmit" OnValidSubmit="OnValidSubmit">
+
+    <ObjectGraphDataAnnotationsValidator />
+
+    <p>
+        Name: <InputText @bind-Value="model.Name" />
+        <ValidationMessage For="@(() => model.Name)" />
+    </p>
+
+    <p>
+        Street: <InputText @bind-Value="model.Address.Street" />
+        <ValidationMessage For="@(() => model.Address.Street)" />
+    </p>
+
+    <p>
+        City: <InputText @bind-Value="model.Address.City" />
+        <ValidationMessage For="@(() => model.Address.City)" />
+    </p>
+
+    @foreach (var phoneNumber in model.PhoneNumbers)
+    {
+        <fieldset>
+            <legend>Phone</legend>
+            <p>
+                Number: <InputText @bind-Value="phoneNumber.Number" />
+                <ValidationMessage For="@(() => phoneNumber.Number)" />
+            </p>
+
+            <p>
+                Description: <InputText @bind-Value="phoneNumber.Description" />
+                <ValidationMessage For="@(() => phoneNumber.Description)" />
+            </p>
+        </fieldset>
+    }
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+<p>Validation result: @validationStatus</p>
+
+@code {
+    Person model = new Person();
+    string validationStatus = "";
+
+    void OnValidSubmit()
+    {
+        validationStatus = "Success!";
+        NavigationManager.NavigateTo("/ValidationSupport/ThankYou");
+    }
+
+    void OnInvalidSubmit()
+    {
+        validationStatus = "Failed!";
+    }
+}

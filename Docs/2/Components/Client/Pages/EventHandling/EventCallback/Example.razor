@@ -1,0 +1,26 @@
+﻿@page "/EventHandling/EventCallback"
+
+<h3>Event Callback</h3>
+
+<ChildComponent Title="Panel Title from Parent" OnClick="ShowMessage">
+    Content of the child component is supplied by the parent component
+</ChildComponent>
+<p><b>@messageText</b></p>
+
+<hr />
+
+<ChildComponent Title="A second example" OnClick="@(() => messageText2 = DateTime.Now.ToLongTimeString())">
+    Content of the second example supplied by the parent
+</ChildComponent>
+<p><b>@messageText2</b></p>
+
+
+@code {
+    private string messageText;
+    private string messageText2;
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        messageText = $"({e.ScreenX}, {e.ScreenY})";
+    }
+}

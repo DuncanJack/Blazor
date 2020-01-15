@@ -1,0 +1,16 @@
+﻿@page "/ArbitraryParameters"
+
+<h3>ParentComponent</h3>
+
+Note the order of parameters makes a difference ;)
+
+<ChildComponent @attributes="Attributes" placeholder="inline"></ChildComponent>
+
+<ChildComponent placeholder="inline" @attributes="Attributes"></ChildComponent>
+
+@code {
+    private IDictionary<string, object> Attributes = new Dictionary<string, object>()
+    {
+        { "placeholder", "from dictionary" }
+    };
+}

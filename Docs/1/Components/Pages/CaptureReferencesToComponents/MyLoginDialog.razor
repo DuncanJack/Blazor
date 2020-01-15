@@ -1,0 +1,49 @@
+@using Components.Models
+
+<h3>MyLoginDialog</h3>
+
+<button @onclick="ParentMethod">ParentMethod</button>
+
+<p>MyLoginDialog.Person.Name: @Person.Name</p>
+
+<button class="btn btn-secondary" @onclick="@Person.Test">Person.Test</button>
+<button class="btn btn-outline-secondary" @onclick="@PersonTest">PersonTest</button>
+
+<button class="btn btn-primary" @onclick="@ChangeName">Change name</button>
+
+<h3>Name: @Name</h3>
+
+@code {
+protected override void OnInitialized()
+{
+    base.OnInitialized();
+
+    Console.WriteLine("MyLoginDialog.OnInitialized");
+}
+
+public void Test()
+{
+    Console.WriteLine("MyLoginDialog.Test");
+}
+
+[Parameter]
+public EventCallback<MouseEventArgs> ParentMethod { get; set; }
+
+[Parameter]
+public Person Person { get; set; }
+
+[Parameter]
+public string Name { get; set; }
+
+private void PersonTest()
+{
+    Person.Test();
+    Person.Name = "Ruth";
+}
+
+private void ChangeName()
+{
+    Name = "Name2";
+    //ParentMethod.InvokeAsync()
+}
+}

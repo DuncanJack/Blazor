@@ -1,0 +1,55 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">JavaScriptInterop</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="InvokeJavaScript">
+                <span class="oi oi-plus" aria-hidden="true"></span> InvokeJavaScript
+            </NavLink>
+        </li>
+        <li style="color:white">
+            Use of IJSRuntime
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="UseOfIJSRuntime/InjectIntoAComponent">
+                <span class="oi oi-plus" aria-hidden="true"></span> InjectIntoAComponent
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="UseOfIJSRuntime/InjectIntoAClass">
+                <span class="oi oi-plus" aria-hidden="true"></span> InjectIntoAClass
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CaptureReferencesToElements">
+                <span class="oi oi-plus" aria-hidden="true"></span> CaptureReferencesToElements
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="InvokeNET">
+                <span class="oi oi-plus" aria-hidden="true"></span> InvokeNET
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

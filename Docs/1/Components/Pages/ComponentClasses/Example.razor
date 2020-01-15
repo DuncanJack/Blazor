@@ -1,0 +1,15 @@
+@page "/componentclasses/example"
+
+<h3 style="color:red">@Text</h3>
+
+<h3 style="color:@Color">@Text</h3>
+
+<h3 style="color:@_color">@_text</h3>
+
+@code {
+private string Color { get; set; } = "red";
+private string Text { get; set; } = "Hello";
+
+private string _color = "blue";
+private string _text = "another one";
+}

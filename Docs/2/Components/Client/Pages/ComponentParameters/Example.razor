@@ -1,0 +1,18 @@
+﻿@page "/ComponentParameters"
+
+<h3>Component Parameters</h3>
+
+<ChildComponent Title="Panel Title from Parent" OnClick="ShowMessage">
+    Content of the child component supplied by the parent component.
+</ChildComponent>
+
+<p>@messageText</p>
+
+@code {
+    private string messageText;
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        messageText = "My message text";
+    }
+}

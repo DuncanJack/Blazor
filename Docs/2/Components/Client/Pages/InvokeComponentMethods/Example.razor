@@ -1,0 +1,15 @@
+﻿@page "/InvokeComponentMethods"
+
+@inject NotifierService Notifier
+
+<h3>Invoke component methods externally to update state</h3>
+
+<MyComponent></MyComponent>
+
+<button class="btn btn-primary"@onclick="@(() => Notifier.Update("A",1))">
+    Notifier.Update
+</button>
+
+@code {
+
+}

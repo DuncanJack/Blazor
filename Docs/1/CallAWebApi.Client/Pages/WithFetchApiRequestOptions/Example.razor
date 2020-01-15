@@ -1,0 +1,81 @@
+﻿@page "/WithFetchApiRequestOptions"
+
+@inject HttpClient Http
+
+@using CallAWebApi.Shared
+
+@using System.Net.Http.Headers
+
+@using Microsoft.AspNetCore.Blazor.Http
+
+<button class="btn btn-sm btn-primary" @onclick="GetPeople">Get People</button>
+
+<button class="btn btn-sm btn-secondary" @onclick="Get">Get</button>
+<button class="btn btn-sm btn-success" @onclick="Post">Post</button>
+<button class="btn btn-sm btn-warning" @onclick="Put">Put</button>
+<button class="btn btn-sm btn-danger" @onclick="Delete">Delete</button>
+
+<hr />
+
+<button class="btn btn-sm btn-success" @onclick="PostWithOptions">PostWithOptions</button>
+
+@code {
+
+
+    private string Endpoint { get; set; } = "http://localhost:50957/person/";
+
+    private async Task GetPeople()
+    {
+        var people = await Http.GetJsonAsync<IEnumerable<Person>>(Endpoint);
+    }
+
+    private async Task Get()
+    {
+        var person = await Http.GetJsonAsync<Person>($"{Endpoint}1");
+    }
+
+    private async Task Post()
+    {
+        await Http.PostJsonAsync(Endpoint, new Person { Name = "Post" });
+    }
+
+    private async Task Put()
+    {
+        await Http.PutJsonAsync(Endpoint, new Person { Name = "Put" });
+    }
+
+    private async Task Delete()
+    {
+        await Http.DeleteAsync($"{Endpoint}1");
+    }
+
+    private async Task PostWithOptions()
+    {
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "MyBearerTokenValue");
+
+        var requestMessage = new HttpRequestMessage
+        {
+            Method = new HttpMethod("POST"),
+            RequestUri = new Uri(Endpoint),
+            Content = new StringContent(@"{""name"":""A New Todo Item"",""id"":1}")
+        };
+
+        requestMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        requestMessage.Content.Headers.TryAddWithoutValidation("x-custom-header", "value");
+
+        // Docs are bing updated re these issue.
+
+        //requestMessage.Properties[WebAssemblyHttpMessageHandler.FetchArgs] = new
+        //{
+        //    credentials = FetchCredentialsOption.Include
+        //};
+
+        //WebAssemblyHttpMessageHandler.DefaultCredentials = FetchCredentialsOption.Include;
+
+        var response = await Http.SendAsync(requestMessage);
+        var responseStatusCode = response.StatusCode;
+        var responseBody = await response.Content.ReadAsStringAsync();
+    }
+
+}

@@ -1,0 +1,14 @@
+﻿@page "/RouteConstraints"
+@page "/RouteConstraints/{age:int}"
+
+<h3>RouteConstraints</h3>
+
+<p>Age: @Age</p>
+
+<NavLink href="/RouteParameters">RouteParameters</NavLink>
+<NavLink href="/RouteConstraints">RouteConstraints</NavLink>
+
+@code {
+    [Parameter]
+    public int Age { get; set; }
+}

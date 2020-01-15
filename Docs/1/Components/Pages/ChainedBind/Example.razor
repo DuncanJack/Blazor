@@ -1,0 +1,9 @@
+﻿@page "/ChainedBind"
+
+<h3>Password: @password</h3>
+
+<PasswordField @bind-Password="password"></PasswordField>
+
+@code {
+    private string password;
+}

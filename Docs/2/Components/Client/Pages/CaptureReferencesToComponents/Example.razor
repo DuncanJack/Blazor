@@ -1,0 +1,18 @@
+﻿@page "/CaptureReferencesToComponents"
+
+<h3>Capture References To Components</h3>
+
+<MyLoginDialog @ref="dialog1" />
+<MyLoginDialog @ref="dialog2" />
+
+@code {
+    private MyLoginDialog dialog1;
+    private MyLoginDialog dialog2;
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            dialog1.MyMethod("Some Note");
+            dialog2.MyMethod("Other Note");
+        }
+}

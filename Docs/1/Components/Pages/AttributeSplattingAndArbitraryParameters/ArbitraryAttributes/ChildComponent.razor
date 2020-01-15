@@ -1,0 +1,12 @@
+﻿<h3>ChildComponent</h3>
+
+<input @attributes="AdditionalAttributes">
+
+<input placeholder="childStart" @attributes="AdditionalAttributes">
+
+<input @attributes="AdditionalAttributes" placeholder="childEnd">
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; }
+}

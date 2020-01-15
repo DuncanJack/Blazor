@@ -1,0 +1,21 @@
+﻿@page "/UtilityBaseComponentClassesExample"
+
+@using DependencyInjection.Services
+
+@*For fun, let's scope a service to the lifetime of a component.*@
+@inherits OwningComponentBase<IMyOtherService>
+
+<h3>Example</h3>
+
+<button class="btn btn-primary" @onclick="Service.Log">Service.Log</button>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("UtilityBaseComponentClassesExample.OnInitialized");
+        
+        Service.Log();
+    }
+
+}

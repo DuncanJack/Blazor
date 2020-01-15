@@ -1,0 +1,28 @@
+@page "/UsingKey"
+
+@using Components.Models;
+
+<h3>Example</h3>
+
+@foreach(var person in People)
+{
+<DetailsEditor @key="person" Person="@person"></DetailsEditor>
+}
+
+@code {
+
+    private IEnumerable<Person> People { get; set; } = null;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        People = new List<Person> {
+        new Person { Name = "Duncan" },
+        new Person { Name = "Ruth" },
+        new Person { Name = "Rebekah"}
+        };
+
+    }
+
+}

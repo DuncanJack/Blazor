@@ -1,0 +1,34 @@
+﻿@page "/InvokeNET"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Example</h3>
+
+<button class="btn btn-primary" onclick="invokeNET.returnArrayAsyncJs()">
+    Trigger .NET static method ReturnArrayAsync
+</button>
+
+<hr />
+
+<button class="btn btn-primary" @onclick="CallInvokeNETSayHello">
+    Trigger .NET instance method SayHello
+</button>
+
+@code {
+
+    [JSInvokable]
+    public static Task<int[]> ReturnArrayAsync()
+    {
+        return Task.FromResult(new[] { 1, 2, 3 });
+    }
+
+    public async Task CallInvokeNETSayHello()
+    {
+        // For convenience, call an instance method on this class. Could be any instance.
+        await JSRuntime.InvokeAsync<object>("invokeNET.sayHello", DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public string SayHello() => "Example.SayHello";
+
+}

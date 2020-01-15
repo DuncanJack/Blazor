@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<Nav></Nav>
+
+<h1>LayoutA</h1>
+
+<div style="border:1px solid green;padding:10px;">
+    @Body
+</div>
+
+<div>
+    @Message
+</div>
+
+@code{
+    public string Message { get; set; } = "LayoutA.Message";
+}

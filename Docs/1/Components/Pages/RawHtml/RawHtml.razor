@@ -1,0 +1,22 @@
+@page "/RawHtml"
+
+<h3>RawHtml</h3>
+
+@((MarkupString)MyMarkup)
+
+@MS
+
+@code {
+
+private string MyMarkup { get; set; } = "<h1>Hello</h1>";
+
+private MarkupString MS { get; set; } = new MarkupString("<h1>Or this</h1>");
+
+protected override void OnInitialized()
+{
+    base.OnInitialized();
+
+
+}
+
+}

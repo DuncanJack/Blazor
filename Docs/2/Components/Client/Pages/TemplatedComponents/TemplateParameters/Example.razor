@@ -1,0 +1,44 @@
+﻿@page "/TemplatedComponents/TemplateParameters"
+
+<h3>Template Paramaters</h3>
+
+<TableTemplate Items="Items">
+    <TableHeader>
+        <th>PersonID</th>
+        <th>Name</th>
+    </TableHeader>
+    <RowTemplate>
+        <td>@context.PersonId</td>
+        <td>@context.Name.</td>
+    </RowTemplate>
+    <TableFooter>
+        <th>The footer</th>
+    </TableFooter>
+</TableTemplate>
+
+<TableTemplate Items="Items">
+    <TableHeader>
+        <th>PersonID</th>
+        <th>Name</th>
+    </TableHeader>
+    <RowTemplate Context="Item"> <!-- Template context parameter -->
+        <td>@Item.PersonId</td>
+        <td>@Item.Name</td>
+    </RowTemplate>
+</TableTemplate>
+
+<TableTemplate Items="Items" Context="Item"> <!-- Template context parameter -->
+    <TableHeader>
+        <th>PersonID</th>
+        <th>Name</th>
+    </TableHeader>
+    <RowTemplate>
+
+        <td>@Item.PersonId</td>
+        <td>@Item.Name</td>
+    </RowTemplate>
+</TableTemplate>
+
+@code {
+    public List<Person> Items = new Person().All;
+}

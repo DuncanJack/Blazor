@@ -1,0 +1,31 @@
+﻿@inject NotifierService Notifier
+
+@implements IDisposable
+
+<h3>MyComponent</h3>
+
+@lastNotification.key, @lastNotification.value
+
+@code {
+    private (string key, int value) lastNotification;
+
+    protected override void OnInitialized()
+    {
+        Notifier.Notify += OnNotify;
+    }
+
+    public async Task OnNotify(string key, int value)
+    {
+        Console.WriteLine("MyComponent.OnNotify");
+        await InvokeAsync(() =>
+        {
+            lastNotification = (key, value);
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        Notifier.Notify -= OnNotify;
+    }
+}
