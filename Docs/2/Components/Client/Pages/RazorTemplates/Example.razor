@@ -1,0 +1,13 @@
+﻿@page "/RazorTemplates/Example"
+
+<h3>Razor Templates</h3>
+
+@timeTemplate
+
+@petTemplate(new Pet { Name = "My Pet" })
+
+@code {
+    private RenderFragment timeTemplate = @<p>The time is @DateTime.Now</p>;
+
+    private RenderFragment<Pet> petTemplate = (pet) => @<p>Your pet's name is @pet.Name</p>;
+}

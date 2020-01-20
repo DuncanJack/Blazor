@@ -1,0 +1,26 @@
+﻿@page "/CascadingValuesAndParameters/ThemeExample"
+@layout CascadingValuesParametersLayout
+
+<h3>Theme Example</h3>
+
+<CascadingValue Value=Outer Name="MyOuterValue">
+    <CascadingValue Value=Inner Name="MyInnerValue">
+        <MyComponent />
+    </CascadingValue>
+</CascadingValue>
+
+    @code {
+
+        private MyCascadingType Outer => new MyCascadingType { Name = "Outer" };
+        private MyCascadingType Inner => new MyCascadingType { Name = "Inner" };
+
+        private int currentCount = 0;
+
+        [CascadingParameter]
+        protected ThemeInfo ThemeInfo { get; set; }
+
+        private void IncrementCount()
+        {
+            currentCount++;
+        }
+    }

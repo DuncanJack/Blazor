@@ -1,0 +1,12 @@
+﻿<h3>MyComponent</h3>
+
+<p>Outer.Name: @A.Name</p>
+<p>Inner.Name: @B.Name</p>
+
+@code {
+    [CascadingParameter(Name = "MyOuterValue")]
+    public MyCascadingType A { get;set; }
+
+    [CascadingParameter(Name = "MyInnerValue")]
+    public MyCascadingType B { get;set; }
+}
