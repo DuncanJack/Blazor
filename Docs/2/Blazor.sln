@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components.Shared", "Compon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layouts", "Layouts\Layouts.csproj", "{2D1F33D9-8993-4987-A11C-D2141D12888D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "101", "101\101.csproj", "{AF17B210-CB49-46E1-AA07-12D69E8C3329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "101", "101\101.csproj", "{AF17B210-CB49-46E1-AA07-12D69E8C3329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
