@@ -1,65 +1,63 @@
-﻿@page "/Lifecycle/LifecycleMethods"
+﻿@page "/Lifecycle/LifecycleMethods/Child"
 
-<h3>
-    Example
-</h3>
+<h3>Child</h3>
 
-<p>Counter: @Counter</p>
+<p>Child.ACounter: @ACounter</p>
 
-<Child ACounter="@Counter">
-    This is the conent for the child to render
-</Child>
-
-<button @onclick="@(() => Counter++)">Increment</button>
+@ChildContent
 
 @code {
 
-    public int Counter { get; set; } = 0;
+    [Parameter]
+    public int ACounter { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-        Console.WriteLine("OnInitialized");
+        Console.WriteLine("- Child.OnInitialized");
     }
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        await Task.Run(() => Console.WriteLine("OnInitializedAsync"));
+        await Task.Run(() => Console.WriteLine("- Child.OnInitializedAsync"));
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
     {
         await base.SetParametersAsync(parameters);
 
-        Console.WriteLine("SetParametersAsync");
+        Console.WriteLine("- Child.SetParametersAsync");
     }
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
 
-        Console.WriteLine("OnParametersSet");
+        Console.WriteLine("- Child.OnParametersSet");
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        await Task.Run(() => Console.WriteLine("OnParametersSetAsync"));
+        await Task.Run(() => Console.WriteLine("- Child.OnParametersSetAsync"));
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
 
-        Console.WriteLine("OnAfterRender");
+        Console.WriteLine("- Child.OnAfterRender");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        await Task.Run(() => Console.WriteLine("OnAfterRenderAsync"));
+        await Task.Run(() => Console.WriteLine("- Child.OnAfterRenderAsync"));
     }
 }
