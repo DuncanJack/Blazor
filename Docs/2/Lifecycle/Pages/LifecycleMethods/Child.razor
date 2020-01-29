@@ -1,0 +1,68 @@
+﻿@page "/Lifecycle/LifecycleMethods/Child"
+
+<h3>Child</h3>
+
+<p>Child.ACounter: @ACounter</p>
+
+@ChildContent
+
+@code {
+
+    [Parameter]
+    public int ACounter { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Console.WriteLine("- Child.OnInitialized");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        await Task.Run(() => Console.WriteLine("- Child.OnInitializedAsync"));
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        Console.WriteLine("- Child.SetParametersAsync");
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        Console.WriteLine("- Child.OnParametersSet");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Run(() => Console.WriteLine("- Child.OnParametersSetAsync"));
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        Console.WriteLine("- Child.OnAfterRender");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        await Task.Run(() => Console.WriteLine("- Child.OnAfterRenderAsync"));
+    }
+
+    protected override bool ShouldRender()
+    {
+        return base.ShouldRender();
+    }
+}

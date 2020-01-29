@@ -1,0 +1,65 @@
+﻿@page "/Lifecycle/LifecycleMethods"
+
+<h3>
+    Example
+</h3>
+
+<p>Counter: @Counter</p>
+
+<Child ACounter="@Counter">
+    This is the conent for the child to render
+</Child>
+
+<button @onclick="@(() => Counter++)">Increment</button>
+
+@code {
+
+    public int Counter { get; set; } = 0;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Console.WriteLine("OnInitialized");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        await Task.Run(() => Console.WriteLine("OnInitializedAsync"));
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        Console.WriteLine("SetParametersAsync");
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        Console.WriteLine("OnParametersSet");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Run(() => Console.WriteLine("OnParametersSetAsync"));
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        Console.WriteLine("OnAfterRender");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        await Task.Run(() => Console.WriteLine("OnAfterRenderAsync"));
+    }
+}
