@@ -1,0 +1,49 @@
+﻿@page "/Lifecycle/StateChanges"
+
+<h3>Example</h3>
+
+<p>@DateTime.Now</p>
+
+<p>Person.Name: @Person.Name</p>
+
+<button @onclick="OnClick1">OnClick1</button>
+
+<button @onclick="OnClick2">OnClick2</button>
+
+<button @onclick="OnClick3">OnClick3</button>
+
+@* 
+    Complex param means child will re-render (OnClick1, OnClick2, OnClick3)
+    Were it just primitive immutable types, child would re-render on change (OnClick2)
+*@
+<Child Counter="counter" Person="Person"></Child>
+
+@code { 
+
+    private int counter = 0;
+
+    private Person Person = new Person { Name = "Initial" };
+
+    protected void OnClick1()
+    {
+        StateHasChanged();
+    }
+
+    protected void OnClick2()
+    {
+        counter++;
+    }
+
+    protected void OnClick3()
+    {
+        Person.Name = DateTime.Now.ToString();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        Console.WriteLine("OnAfterRender");
+    }
+
+}
