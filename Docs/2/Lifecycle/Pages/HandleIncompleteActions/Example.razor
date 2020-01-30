@@ -1,0 +1,16 @@
+﻿@page "/HandleIncompleteActions"
+
+<h3>Handle Incomplete Actions</h3>
+
+<p>Maintenant: @(maintenant == null ? "" : maintenant.TimeOfDay.ToString())</p>
+
+@code {
+    private DateTime maintenant;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        await Task.Run(() => maintenant = DateTime.Now);
+    }
+}

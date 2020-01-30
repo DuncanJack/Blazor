@@ -1,0 +1,28 @@
+﻿<h3>Child</h3>
+
+<button @onclick="OnClick">OnClick</button>
+
+<p>Counter: @Counter</p>
+
+<p>Person.Name: @Person?.Name</p>
+
+@code {
+    [Parameter]
+    public int Counter { get; set; } = 0;
+
+    [Parameter]
+    public Person Person { get; set; }
+
+    protected void OnClick()
+    {
+        StateHasChanged();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        Console.WriteLine("Child.OnAfterRender");
+    }
+
+}
