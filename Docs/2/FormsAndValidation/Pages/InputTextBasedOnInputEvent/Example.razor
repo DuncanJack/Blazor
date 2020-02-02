@@ -1,22 +1,22 @@
-﻿@page "/EditContext"
+﻿@page "/BasedOnInputEvent"
 
 @using FormsAndValidation.Models
 
-<h3>EditContext</h3>
+<h3>InputText based on input event</h3>
 
 <EditForm EditContext="_editContext" OnSubmit="HandleSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <p>
         <label>
             Identifier
-            <InputText @bind-Value="_myModel.Identifier" />
+            <MyInputText @bind-Value="_myModel.Identifier" />
         </label>
     </p>
     <p>
         <label>
             Name
-            <InputText @bind-Value="_myModel.Name" />
+            <MyInputText @bind-Value="_myModel.Name" />
         </label>
     </p>
 
