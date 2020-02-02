@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "101", "101\101.csproj", "{A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lifecycle", "Lifecycle\Lifecycle.csproj", "{15390BFD-000B-4F69-B5E8-E15B74711EDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsAndValidation", "FormsAndValidation\FormsAndValidation.csproj", "{4FB52276-601A-46AF-88DA-723ED4B9BE28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormsAndValidation", "FormsAndValidation\FormsAndValidation.csproj", "{4FB52276-601A-46AF-88DA-723ED4B9BE28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
