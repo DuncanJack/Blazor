@@ -1,0 +1,20 @@
+﻿@page "/ValidationSupport/NestedModels/"
+
+<EditForm Model="_model" OnValidSubmit="HandleValidSubmit">
+    <ObjectGraphDataAnnotationsValidator/>
+
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<h3>Nested Models</h3>
+
+@code {
+    private Starship _model = new Starship();
+
+    private void HandleValidSubmit()
+    {
+
+    }
+
+}
