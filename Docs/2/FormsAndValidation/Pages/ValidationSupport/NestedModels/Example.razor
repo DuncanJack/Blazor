@@ -1,20 +1,36 @@
 ﻿@page "/ValidationSupport/NestedModels/"
 
-<EditForm Model="_model" OnValidSubmit="HandleValidSubmit">
-    <ObjectGraphDataAnnotationsValidator/>
+<h3>Nested Models</h3>
 
+
+<EditForm Model="_model" OnValidSubmit="HandleValidSubmit">
+    <ObjectGraphDataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>
+        <label>
+            Short Description
+            <InputText @bind-Value="_model.ShipDescription.ShortDescription" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Long Description
+            <InputText @bind-Value="_model.ShipDescription.LongDescription" />
+        </label>
+    </p>
 
     <button type="submit">Submit</button>
 </EditForm>
 
-<h3>Nested Models</h3>
 
 @code {
     private Starship _model = new Starship();
 
     private void HandleValidSubmit()
     {
-
+        Console.WriteLine("Valid");
     }
 
 }

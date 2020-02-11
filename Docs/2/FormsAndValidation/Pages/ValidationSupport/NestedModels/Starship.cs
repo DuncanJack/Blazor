@@ -8,6 +8,11 @@ namespace FormsAndValidation.Pages.ValidationSupport.NestedModels
 {
     public class Starship
     {
+        public Starship()
+        {
+            ShipDescription = new ShipDescription();
+        }
+
         [ValidateComplexType]
         public ShipDescription ShipDescription { get; set; }
     }
