@@ -1,0 +1,51 @@
+﻿@page "/ValidationSupport/CustomValidationAttributes/"
+
+@using System.ComponentModel.DataAnnotations
+
+<h3>Custom Validation Attributes</h3>
+
+<EditForm Model="_model" OnValidSubmit="HandleValidSubmit" >
+
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <p>
+        <label>
+            Name: <InputText @bind-Value="_model.Name"/>
+        </label>
+    </p>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+@code {
+    private Model _model = new Model();
+
+    public class Model
+    {
+        [MyCustomValidator]
+        public string Name { get; set; }
+    }
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine("Valid Submit");
+    }
+
+
+    private class MyCustomValidator : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value != null && value.Equals("OK"))
+            {
+                return null;
+            }
+            else
+            {
+                return new ValidationResult("NOT OK", new[] { validationContext.MemberName });
+            }
+        }
+    }
+}

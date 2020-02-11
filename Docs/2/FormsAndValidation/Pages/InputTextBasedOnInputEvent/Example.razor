@@ -1,0 +1,47 @@
+﻿@page "/BasedOnInputEvent"
+
+@using FormsAndValidation.Models
+
+<h3>InputText based on input event</h3>
+
+<EditForm EditContext="_editContext" OnSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <p>
+        <label>
+            Identifier
+            <MyInputText @bind-Value="_myModel.Identifier" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Name
+            <MyInputText @bind-Value="_myModel.Name" />
+        </label>
+    </p>
+
+    <button type="submit">Submit</button>
+
+</EditForm>
+
+@code {
+    private MyModel _myModel = new MyModel();
+    private EditContext _editContext;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _editContext = new EditContext(_myModel);
+    }
+
+    private async Task HandleSubmit()
+    {
+        var isValid = _editContext.Validate() && await ServerValidate(_editContext);
+    }
+
+    private async Task<bool> ServerValidate(EditContext editContext)
+    {
+        Console.WriteLine("ServerValidate");
+        return await Task.FromResult(true);
+    }
+}

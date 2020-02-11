@@ -1,0 +1,45 @@
+﻿@page "/ValidationSupport/EnableTheSubmitButton"
+
+@using FormsAndValidation.Models
+
+<h3>Enable the Submit Button</h3>
+
+<EditForm EditContext="_editContext" OnValidSubmit="@(() => Console.WriteLine("Valid Submit"))">
+    <ObjectGraphDataAnnotationsValidator />
+    <ValidationSummary style="@_displaySummary" />
+
+    <p>
+        <label>
+            Short Description
+            <InputText @bind-Value="_starship.ShipDescription.ShortDescription" />
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Long Description
+            <InputText @bind-Value="_starship.ShipDescription.LongDescription" />
+        </label>
+    </p>
+
+    <button type="submit" disabled="@_formInvalid">Submit</button>
+</EditForm>
+
+@code {
+    private Starship _starship = new Starship();
+    private bool _formInvalid = false;
+    private EditContext _editContext;
+    private string _displaySummary = "display:none";
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(_starship);
+
+        _editContext.OnFieldChanged += (object sender, FieldChangedEventArgs args) =>
+        {
+            _formInvalid = !_editContext.Validate();
+            StateHasChanged();
+            Console.WriteLine(_formInvalid);
+        };
+    }
+}
